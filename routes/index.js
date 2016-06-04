@@ -1,11 +1,18 @@
 'use strict';
 
-const path = process.cwd();
-
 module.exports = function(app) {
 
   app.get('/', function(req, res) {
-    res.sendFile(path + '/static/index.html');
+    res.render('pages/index.ejs', {
+      successMessage: req.flash('successMessage'),
+      failureMessage: req.flash('failureMessage')
+    });
+  });
+
+  app.post('/', function(req, res) {
+    console.log(req.body);
+    req.flash('successMessage', 'Payment has been made successfully. Thank you.');
+    res.redirect('/');
   });
 
 }
