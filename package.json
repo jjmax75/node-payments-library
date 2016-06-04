@@ -1,0 +1,32 @@
+{
+  "name": "node-payments-library",
+  "version": "0.1.0",
+  "description": "A payment gateway library for Braintree and Paypal built in Node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjmax75/node-payments-library.git"
+  },
+  "engines": {
+    "node": "4.4.5"
+  },
+  "keywords": [
+    "node",
+    "payment gateway",
+    "braintree",
+    "paypal"
+  ],
+  "author": "Sean Behan <behanj@gmail.com> (http://boxitoff.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjmax75/node-payments-library/issues"
+  },
+  "homepage": "https://github.com/jjmax75/node-payments-library#readme",
+  "devDependencies": {
+    "tap-dot": "1.0.5",
+    "tape": "4.5.1"
+  }
+}
