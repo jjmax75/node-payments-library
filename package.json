@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "description": "A payment gateway library for Braintree and Paypal built in Node",
   "main": "app.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "test": "tape test/**/*.js | tap-dot"
   },
   "repository": {
     "type": "git",
@@ -28,5 +31,10 @@
   "devDependencies": {
     "tap-dot": "1.0.5",
     "tape": "4.5.1"
+  },
+  "dependencies": {
+    "dotenv": "2.0.0",
+    "express": "4.13.4",
+    "morgan": "1.7.0"
   }
 }
