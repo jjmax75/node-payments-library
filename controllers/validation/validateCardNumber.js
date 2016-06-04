@@ -22,9 +22,28 @@ const validateCardNumber = function validateCardNumber() {
     return total % 10 === 0 ? true : false;
   }
 
-  o.isAmex = function(number) {
+  o.cardType = function(number) {
     const validAmexRegexp = /^3[47][0-9]{13}$/;
-    return validAmexRegexp.test(number);
+    const validMasterRegexp = /^5[1-5][0-9]{14}$/;
+    const validVisaRegexp = /^4[0-9]{12}(?:[0-9]{3})?$/;
+    const validDiscoverRegexp = /^6(?:011|5[0-9]{2})[0-9]{12}$/;
+
+    switch(true) {
+      case validAmexRegexp.test(number):
+        return 'amex';
+        break;
+      case validMasterRegexp.test(number):
+        return 'mastercard';
+        break;
+      case validVisaRegexp.test(number):
+        return 'visa';
+        break;
+      case validDiscoverRegexp.test(number):
+        return 'discover';
+        break;
+      default:
+        return null;
+    };
   }
 
   return o;
