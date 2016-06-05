@@ -12,8 +12,8 @@ An example of this file is available at `.env.sample` (`.env` files should not b
 
 ## TODO 5th June
 
-- [ ] Paypal - sending errors to user
-- [ ] Paypal - Saving to DB
+- [x] Paypal - sending errors to user
+- [x] Paypal - Saving to DB
 - [ ] Braintree
 
 ## Future dev
