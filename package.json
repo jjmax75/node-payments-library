@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js",
-    "test": "tape test/**/*.js | tap-dot"
+    "test": "tape test/*.js | tap-dot"
   },
   "repository": {
     "type": "git",
