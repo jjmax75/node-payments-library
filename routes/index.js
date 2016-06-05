@@ -3,7 +3,8 @@
 const path = process.cwd();
 
 const validateCardNumber = require(path + '/controllers/validation/validateCardNumber')();
-const processPaypalPayment = require(path + '/controllers/gateways/paypal/processPayment.js');
+const processPaypalPayment = require(path + '/controllers/gateways/paypal/processPayment');
+const savePaymentToDb = require(path + '/controllers/database/payment/savePaymentToDb');
 
 module.exports = function(app) {
 
@@ -19,14 +20,21 @@ module.exports = function(app) {
     const currency = req.body.currency;
 
     const sendResponse = function sendResponse(error, success) {
-      console.log('Redirecting now');
+
       if (error) {
         req.flash('failureMessage', error);
+        res.redirect('/');
       } else {
-        req.flash('successMessage', 'Your payment has been successful, Thank you.');
+        const dbUpdated = function dbUpdated(error, success) {
+          if (error) {
+            console.log(error);
+          } else {
+            req.flash('successMessage', 'Your payment has been successful, Thank you.');
+          }
+          res.redirect('/');
+        };
+        savePaymentToDb(success, req.body, dbUpdated);
       }
-
-      res.redirect('/');
     };
 
     if (cardType === null || !validateCardNumber.luhnCheck(req.body.cardNumber)) {

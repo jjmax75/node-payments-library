@@ -2,6 +2,7 @@
 
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
@@ -10,6 +11,8 @@ const session = require('express-session');
 require('dotenv').config();
 const port = process.env.PORT || 3000;
 const path = process.cwd();
+
+mongoose.connect(process.env.MONGO_URI);
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));

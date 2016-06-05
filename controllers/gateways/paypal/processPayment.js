@@ -12,11 +12,12 @@ const processPayment = function processPayment(paymentDetails, cb) {
 
   paypal.payment.create(paymentDetails, function(error, payment) {
     if (error) {
-      console.log(error.response.details);
-      cb(error);
+      let errorMessage = '';
+      error.response.details.forEach(function(error) {
+        errorMessage += error.issue;
+      });
+      cb(errorMessage);
     } else {
-      console.log('Create Payment Response');
-      console.log(payment);
       cb(null, payment);
     }
   });
