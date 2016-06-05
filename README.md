@@ -10,11 +10,9 @@ Can setup Paypal and Braintree information in a `.env` file in the root of the a
 
 An example of this file is available at `.env.sample` (`.env` files should not be committed to repo).
 
-## TODO 5th June
+## Demo
 
-- [x] Paypal - sending errors to user
-- [x] Paypal - Saving to DB
-- [x] Braintree
+https://node-payment-gateway.herokuapp.com/
 
 ## Future dev
 
