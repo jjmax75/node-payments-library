@@ -4,6 +4,7 @@ const path = process.cwd();
 
 const validateCardNumber = require(path + '/controllers/validation/validateCardNumber')();
 const processPaypalPayment = require(path + '/controllers/gateways/paypal/processPayment');
+const processBraintreePayment = require(path + '/controllers/gateways/braintree/processPayment');
 const savePaymentToDb = require(path + '/controllers/database/payment/savePaymentToDb');
 
 module.exports = function(app) {
@@ -26,11 +27,8 @@ module.exports = function(app) {
         res.redirect('/');
       } else {
         const dbUpdated = function dbUpdated(error, success) {
-          if (error) {
-            console.log(error);
-          } else {
-            req.flash('successMessage', 'Your payment has been successful, Thank you.');
-          }
+          if (error) console.log(error);
+          req.flash('successMessage', 'Your payment has been successful, Thank you.');
           res.redirect('/');
         };
         savePaymentToDb(success, req.body, dbUpdated);
@@ -74,6 +72,7 @@ module.exports = function(app) {
 
       } else {
         // TODO - Braintree will process payment
+        processBraintreePayment(req.body.price, sendResponse);
       }
     }
 

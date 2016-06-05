@@ -14,9 +14,10 @@ An example of this file is available at `.env.sample` (`.env` files should not b
 
 - [x] Paypal - sending errors to user
 - [x] Paypal - Saving to DB
-- [ ] Braintree
+- [x] Braintree
 
 ## Future dev
 
 - Repopulate form on error, highlight problem field(s) or....
 - Ajaxify
+- Clientside determining of payment method will allow Braintree Client Token -> Nonce -> Transaction
