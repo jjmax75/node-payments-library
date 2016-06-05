@@ -1,6 +1,6 @@
 # Node Payments Library
 
-A project to take payments on a Node based pages
+A project to take payments on a Node based page
 
 ## Usage
 
